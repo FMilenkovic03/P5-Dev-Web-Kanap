@@ -28,8 +28,8 @@ fetch('http://localhost:3000/api/products')
             a.setAttribute('href', Url);
             //appel des elements
             a = product._id;
-            img.src = product.imageUrl;
-            img.alt = product.altTxt;
+            img.src = "./product.html?id=42";
+            img.alt = "Lorem ipsum dolor sit amet, Kanap name1";
             h3.innerHTML = product.name;
             p.innerHTML = product.description;
             console.log(product);
