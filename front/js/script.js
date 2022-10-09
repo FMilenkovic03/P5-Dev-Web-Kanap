@@ -11,7 +11,8 @@ fetch('http://localhost:3000/api/products')
     .then(function(produits){
         produits.forEach(product => {
             let items = document.getElementById('items'); // item est select
-            
+            a = document.createElement('a');
+            article = document.createElement('article').appendChild(article.classList.add("carteProduit"));
         })
         .catch((error) => {
             console.log(error);
