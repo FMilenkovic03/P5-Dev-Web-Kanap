@@ -10,6 +10,7 @@ fetch('http://localhost:3000/api/products')
     // Récupération des produits
     .then(function(produits){
         produits.forEach(product => {
+            let items = document.getElementById('items'); // item est select
             
         })
         .catch((error) => {
