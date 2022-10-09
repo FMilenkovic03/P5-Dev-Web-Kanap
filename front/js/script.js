@@ -16,10 +16,8 @@ fetch('http://localhost:3000/api/products')
             Url = "./product.html?id=42" + product._id;
             article = document.createElement('article');
             img = document.createElement('img');
-            h3 = document.createElement('h3')
-            h3.classList.add("productName");
-            p = document.createElement('p')
-            p.classList.add("productDescription");
+            h3 = document.createElement('h3').classList.add("productName");
+            p = document.createElement('p').classList.add("productDescription");
             //assignation enfant parent
             items.appendChild(a);
             a.appendChild(article);
