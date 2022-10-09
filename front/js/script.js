@@ -13,11 +13,11 @@ fetch('http://localhost:3000/api/products')
             //declaration et ajout de classe
             let items = document.getElementById('items');
             a = document.createElement('a');
+            Url = "./product.html?id=42" + product._id;
             article = document.createElement('article');
             img = document.createElement('img');
             h3 = document.createElement('h3').classList.add("productName");
             p = document.createElement('p').classList.add("productDescription");
-            Url = "./product.html?id=42" + product._id;
             //assignation enfant parent
             items.appendChild(a);
             a.appendChild(article);
