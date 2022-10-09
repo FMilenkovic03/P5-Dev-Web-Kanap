@@ -27,6 +27,7 @@ fetch('http://localhost:3000/api/products')
             //lien a
             a.setAttribute('href', Url);
             //appel des elements
+            a = product._id;
             img.src = product.imageUrl;
             img.alt = product.altTxt;
             h3.innerHTML = product.name;
