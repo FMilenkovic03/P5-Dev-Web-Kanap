@@ -6,4 +6,12 @@ fetch('http://localhost:3000/api/products')
             return res.json();
         }
     })
-    // Récupération des données
+    .catch((error) => {
+        console.log(error);
+    })
+    // Récupération des produits
+    .then(function(produits){
+        produits.forEach(product => {
+
+        })
+    })
