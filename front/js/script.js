@@ -12,12 +12,12 @@ fetch('http://localhost:3000/api/products')
         produits.forEach(product => {
             //declaration et ajout de classe
             let items = document.getElementById('items');
-            a = document.createElement('a');
-            Url = "./product.html?id=" + product._id;
-            article = document.createElement('article');
-            img = document.createElement('img');
-            h3 = document.createElement('h3').classList.add("productName");
-            p = document.createElement('p').classList.add("productDescription");
+            let a = document.createElement('a');
+            let Url = "./product.html?id=" + product._id;
+            let article = document.createElement('article');
+            let img = document.createElement('img');
+            let h3 = document.createElement('h3').classList.add("productName");
+            let p = document.createElement('p').classList.add("productDescription");
             //assignation enfant parent
             items.appendChild(a);
             a.appendChild(article);
