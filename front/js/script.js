@@ -1,5 +1,7 @@
 //requêter l'API pour les produits
 
+//maybe fetch in a function ? then call function ?
+
 fetch('http://localhost:3000/api/products')
     .then(function (res) {
         if (res.ok) {
