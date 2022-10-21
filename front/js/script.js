@@ -12,13 +12,13 @@ fetch('http://localhost:3000/api/products')
     .then(function (produits) {
         produits.forEach(product => {
             //declaration et ajout de classe
-            let items = document.getElementById('items');
-            let a = document.createElement('a');
-            let Url = "./product.html?id=" + product._id;
-            let article = document.createElement('article');
-            let img = document.createElement('img');
-            let h3 = document.createElement('h3');
-            let p = document.createElement('p');
+            const items = document.getElementById('items');
+            const a = document.createElement('a');
+            const Url = "./product.html?id=" + product._id;
+            const article = document.createElement('article');
+            const img = document.createElement('img');
+            const h3 = document.createElement('h3');
+            const p = document.createElement('p');
             
             //lien a
             a.href = Url;
