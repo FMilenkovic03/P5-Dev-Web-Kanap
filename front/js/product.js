@@ -42,7 +42,9 @@ getOneProduct();
 //add au panier
 
 let btn = document.querySelector("#addToCart");
-let idProduit = adress.get("id");
+let adresse = new URLSearchParams(window.location.search);
+let idProduit = adresse.get("id");
+
 btn.addEventListener("click", () => {
     let Qty = document.querySelector("#quantity");
     let choiceColor = document.querySelector("#colors");
