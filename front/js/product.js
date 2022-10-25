@@ -1,6 +1,6 @@
 //fonction pour appeler un produit
 
-function callProduct(){
+function getOneProduct(){
     fetch("http://localhost:3000/api/products")
         .then(function (res) {
             if (res.ok) {
@@ -37,9 +37,25 @@ function callProduct(){
             console.log(error);
         });
 }
-callProduct();
+getOneProduct();
     
 //add au panier
 
+let btn = document.querySelector("#addToCart");
+btn.addEventListener("click", () => {
+    let Qty = document.querySelector("#quantity");
+    let choiceColor = document.querySelector("#colors");
+    //vérification de quantité
+    if((Qty => 0 && Qty <= 100) && choiceColor == "") {
+        console.log("SVP, choisissez une couleur");
+        console.log("Choisissez un nombre d'articles entre 1 et 100");
+    } else {
+        console.log ("La quantité saisie doit être correcte et la couleur saisie !");
+    }
+
+
+
+
+});
 
 
