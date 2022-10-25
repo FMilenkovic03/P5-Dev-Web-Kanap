@@ -49,12 +49,18 @@ btn.addEventListener("click", () => {
     if((Qty => 0 && Qty <= 100) && choiceColor == "") {
         console.log("SVP, choisissez une couleur");
         console.log("Choisissez un nombre d'articles entre 1 et 100");
-    } else {
+    } else if((Qty < 0 && Qty > 100) || choiceColor !== "") {
         console.log ("La quantité saisie doit être correcte et la couleur saisie !");
+    } else {
+        let produit = {
+            name: titre.innerText,
+            couleur: choiceColor,
+            quantite: Qty,
+            Image: img,
+        };
+
+
     }
-
-
-
 
 });
 
