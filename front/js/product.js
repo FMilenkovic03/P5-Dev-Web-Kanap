@@ -15,8 +15,7 @@ function getOneProduct(){
             let description = document.querySelector("#description");
             let couleur = document.querySelector("#colors");
             let imgProduit = document.createElement("img");
-            img.src = product.imageUrl;
-            img.alt = product.altTxt;
+            let photo = "";
             //product modification
             nomProduit.innerText = `${product.name}`;
             prix.innerText = `${product.price}`;
@@ -24,7 +23,8 @@ function getOneProduct(){
             //img append        
             imgCadre.appendChild(imgProduit);
             imgProduit.setAttribute("src", product.imageUrl);
-            imgProduit.setAttribute("alt", product.altTxt)
+            photo = product.imageUrl;
+            imgProduit.setAttribute("alt", product.altTxt);
             //color choosing
             product.couleur.forEach(element => {
                 let option = document.createElement("option");
@@ -46,8 +46,8 @@ let adresse = new URLSearchParams(window.location.search);
 let idProduit = adresse.get("id");
 
 btn.addEventListener("click", () => {
-    let Qty = document.querySelector("#quantity");
-    let choiceColor = document.querySelector("#colors");
+    let Qty = document.querySelector("#quantity").value;
+    let choiceColor = document.querySelector("#colors").value;
     //vérification de quantité
     if((Qty => 0 && Qty <= 100) && choiceColor == "") {
         console.log("SVP, choisissez une couleur");
