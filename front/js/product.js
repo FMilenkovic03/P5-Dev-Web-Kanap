@@ -9,10 +9,10 @@ function getOneProduct(){
         })
         .then((product) => {
             //appel elt
-            let imgCadre = document.querySelector(".item__img");
             let nomProduit = document.querySelector("#title");
             let prix = document.querySelector("#price");
             let description = document.querySelector("#description");
+            let imgCadre = document.querySelector(".item__img");
             let couleur = document.querySelector("#colors");
             let imgProduit = document.createElement("img");
             let photo = "";
