@@ -25,6 +25,7 @@ fetch("http://localhost:3000/api/products")
         imgProduit.setAttribute("src", product.imageUrl);
         photo = product.imageUrl;
         imgProduit.setAttribute("alt", product.altTxt);
+        //console.log();
         //color choosing
         product.couleur.forEach(element => {
             let option = document.createElement("option");
@@ -68,8 +69,7 @@ fetch("http://localhost:3000/api/products")
             };
             let cartStorage = JSON.parse(localStorage.getItem("Panier"));
             if (cartStorage) {
-                const getProductCart = cartStorage.find(
-                    (p) => p.id == produit.id && p.color == produit.color);
+                const getProductCart = cartStorage;
                     if(getProductCart) {
                         getProductCart.quantite += produit.quantite;
                         localStorage.setItem("Panier", JSON.stringify(cartStorage));
