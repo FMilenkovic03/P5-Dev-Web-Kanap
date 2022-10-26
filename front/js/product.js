@@ -76,12 +76,12 @@ fetch("http://localhost:3000/api/products")
                         console.log("Ajout au panier !");
                     }
                     cartStorage.push(produit);
-                } else {
-                    cartStorage = [];
-                    cartStorage.push(produit);
-                }
-                localStorage.setItem("Panier", JSON.stringify(cartStorage));
-                console.log("Ajout au panier !");
+            } else {
+                cartStorage = [];
+                cartStorage.push(produit);
+            }
+            localStorage.setItem("Panier", JSON.stringify(cartStorage));
+            console.log("Ajout au panier !");
                 
             }
             
