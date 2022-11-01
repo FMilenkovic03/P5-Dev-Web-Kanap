@@ -66,15 +66,15 @@ btn.addEventListener("click", () => {
             imageUrl: product.imageUrl,
             description: product.description,
             altTxt: product.altTxt,
-            quantity: quantity.value,
+            Qty: quantity.value,
 
         };
-        let cartStorage = JSON.parse(localStorage.getItem("Panier"));
+        let cartStorage = JSON.parse(localStorage.getItem("cart"));
         if (cartStorage) {
             const getProductCart = cartStorage;
             if (getProductCart) {
                 getProductCart.quantite += products.quantite;
-                localStorage.setItem("Panier", JSON.stringify(cartStorage));
+                localStorage.setItem("cart", JSON.stringify(cartStorage));
                 console.log("Ajout au panier !");
             }
             cartStorage.push(products);
@@ -82,7 +82,7 @@ btn.addEventListener("click", () => {
             cartStorage = [];
             cartStorage.push(products);
         }
-        localStorage.setItem("Panier", JSON.stringify(cartStorage));
+        localStorage.setItem("cart", JSON.stringify(cartStorage));
         console.log("Ajout au panier !");
 
     }
