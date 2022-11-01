@@ -12,28 +12,28 @@ fetch("http://localhost:3000/api/products/107fb5b75607497b96722bda5b504926")
     .then((product) => {
         console.log(product);
         //appel elt
-        let nameProduct = document.querySelector("#title");
-        let price = document.querySelector("#price");
+        let nomProduit = document.querySelector("#title");
+        let prix = document.querySelector("#price");
         let description = document.querySelector("#description");
-        let imgItem = document.querySelector(".item__img");
-        let color = document.querySelector("#colors");
-        let imgProduct = document.createElement("img");
+        let imgCadre = document.querySelector(".item__img");
+        let couleur = document.querySelector("#colors");
+        let imgProduit = document.createElement("img");
         let photo = "";
         quantity.value = 1;
         //product modification
-        nameProduct.innerText = product.name;
-        price.innerText = product.price;
+        nomProduit.innerText = product.name;
+        prix.innerText = product.price;
         description.innerText = product.description;
         //img append        
-        imgItem.appendChild(imgProduct);
-        imgProduct.setAttribute("src", product.imageUrl);
+        imgCadre.appendChild(imgProduit);
+        imgProduit.setAttribute("src", product.imageUrl);
         photo = product.imageUrl;
-        imgProduct.setAttribute("alt", product.altTxt);
+        imgProduit.setAttribute("alt", product.altTxt);
         //console.log();
-        //color choosing options
+        //color choosing
         product.colors.forEach(element => {
             let option = document.createElement("option");
-            color.appendChild(option);
+            couleur.appendChild(option);
             option.setAttribute("value", element);
             option.innerText = element;
         });
@@ -59,9 +59,10 @@ btn.addEventListener("click", () => {
         console.log("La quantité saisie doit être correcte et la couleur saisie !");
     } else {
         let produit = {
-            id: id,
-            color: choiceColor,
+            id: idProduit,
+            couleur: choiceColor,
             quantite: quantity.value,
+
         };
         let cartStorage = JSON.parse(localStorage.getItem("Panier"));
         if (cartStorage) {
