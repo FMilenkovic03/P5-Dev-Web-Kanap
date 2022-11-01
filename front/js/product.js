@@ -1,5 +1,7 @@
 //fonction pour appeler un produit
 const quantity = document.querySelector("#quantity");
+let adresse = new URLSearchParams(window.location.search);
+let id = URLSearchParams.get("id");
 
 fetch("http://localhost:3000/api/products/107fb5b75607497b96722bda5b504926")
     .then(function (res) {
@@ -45,8 +47,7 @@ fetch("http://localhost:3000/api/products/107fb5b75607497b96722bda5b504926")
 //add au panier
 
 let btn = document.querySelector("#addToCart");
-let adresse = new URLSearchParams(window.location.search);
-let idProduit = adresse.get("id");
+
 
 btn.addEventListener("click", () => {
     let choiceColor = document.querySelector("#colors").value;
@@ -61,8 +62,6 @@ btn.addEventListener("click", () => {
             id: idProduit,
             couleur: choiceColor,
             quantite: quantity.value,
-
-
         };
         let cartStorage = JSON.parse(localStorage.getItem("Panier"));
         if (cartStorage) {
