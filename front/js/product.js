@@ -12,23 +12,23 @@ fetch("http://localhost:3000/api/products/107fb5b75607497b96722bda5b504926")
     .then((product) => {
         console.log(product);
         //appel elt
-        let nomProduit = document.querySelector("#title");
-        let prix = document.querySelector("#price");
+        let nameProduct = document.querySelector("#title");
+        let price = document.querySelector("#price");
         let description = document.querySelector("#description");
-        let imgCadre = document.querySelector(".item__img");
+        let imgItem = document.querySelector(".item__img");
         let couleur = document.querySelector("#colors");
-        let imgProduit = document.createElement("img");
+        let imgProduct = document.createElement("img");
         let photo = "";
         quantity.value = 1;
         //product modification
-        nomProduit.innerText = product.name;
-        prix.innerText = product.price;
+        nameProduct.innerText = product.name;
+        price.innerText = product.price;
         description.innerText = product.description;
         //img append        
-        imgCadre.appendChild(imgProduit);
-        imgProduit.setAttribute("src", product.imageUrl);
+        imgItem.appendChild(imgProduct);
+        imgProduct.setAttribute("src", product.imageUrl);
         photo = product.imageUrl;
-        imgProduit.setAttribute("alt", product.altTxt);
+        imgProduct.setAttribute("alt", product.altTxt);
         //console.log();
         //color choosing
         product.colors.forEach(element => {
