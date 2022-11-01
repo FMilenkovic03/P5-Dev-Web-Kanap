@@ -16,7 +16,7 @@ fetch("http://localhost:3000/api/products/107fb5b75607497b96722bda5b504926")
         let price = document.querySelector("#price");
         let description = document.querySelector("#description");
         let imgItem = document.querySelector(".item__img");
-        let couleur = document.querySelector("#colors");
+        let color = document.querySelector("#colors");
         let imgProduct = document.createElement("img");
         let photo = "";
         quantity.value = 1;
@@ -30,10 +30,10 @@ fetch("http://localhost:3000/api/products/107fb5b75607497b96722bda5b504926")
         photo = product.imageUrl;
         imgProduct.setAttribute("alt", product.altTxt);
         //console.log();
-        //color choosing
+        //color choosing options
         product.colors.forEach(element => {
             let option = document.createElement("option");
-            couleur.appendChild(option);
+            color.appendChild(option);
             option.setAttribute("value", element);
             option.innerText = element;
         });
@@ -59,8 +59,8 @@ btn.addEventListener("click", () => {
         console.log("La quantité saisie doit être correcte et la couleur saisie !");
     } else {
         let produit = {
-            id: idProduit,
-            couleur: choiceColor,
+            id: id,
+            color: choiceColor,
             quantite: quantity.value,
         };
         let cartStorage = JSON.parse(localStorage.getItem("Panier"));
