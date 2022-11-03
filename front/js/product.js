@@ -1,10 +1,13 @@
-//fonction pour appeler un produit
+//var globales
 const quantity = document.querySelector("#quantity");
-let id = new URLSearchParams(window.location.search);
 let colors = document.querySelector("#colors").value;
+const str = window.location.href;
+var url = new URL(str);
+let id = url.searchParams.get("id");
+let Url = `http://localhost:3000/api/products/${id}`;
 
-
-fetch("http://localhost:3000/api/products/${id}")
+//fetch
+fetch(Url)
     .then((response) => response.json())
     .then((product) => {
         console.log(product);
