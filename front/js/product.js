@@ -27,6 +27,7 @@ fetch(Url)
 
         //color choosing
         let selectedColor = document.querySelector("select");
+        //boucle for, qui va reprendre chaque couleur
         for (i = 0; i < product.colors.length; i++) {
             let option = document.createElement("option");
             option.setAttribute("value", product.colors[i]);
@@ -51,7 +52,7 @@ fetch(Url)
                 Qty: document.querySelector("#quantity").value,
 
             };
-
+            //déclaration du storage
             let productInLocalStorage = [];
             //vérif quantité et couleurs
             if (selectedProduct.color < 1) {
@@ -60,6 +61,7 @@ fetch(Url)
                 //
                 if (selectedProduct.Qty < 1 || selectedProduct > 100) {
                     alert("Choisissez une quantitée entre 1 et 100 ");
+                    //sinon (ou si les conditions remplies, on passe à l'ajout au panier)
                 } else {
                     if (localStorage.getItem("Products")) {
                         productInLocalStorage = JSON.parse(
@@ -86,6 +88,7 @@ fetch(Url)
 
                             productInLocalStorage[indexAlreadyChosen].Qty = sum;
                         } else {
+                            //sinon, on push le selected produit dans le storage
                             productInLocalStorage.push(selectedProduct);
                         }
                         localStorage.setItem(
