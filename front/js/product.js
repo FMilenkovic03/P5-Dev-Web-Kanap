@@ -104,7 +104,7 @@ fetch(Url)
                             console.log(productInLocalStorage);
                         }
 
-                        console.log("produit ajouté => ", selectedProduct);
+                        console.log("Produit ajouté : ", selectedProduct);
                         alert("Votre produit est ajouté au panier.");
                     }
                 }
