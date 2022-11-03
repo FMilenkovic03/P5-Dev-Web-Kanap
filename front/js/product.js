@@ -28,14 +28,13 @@ fetch(Url)
         quantity.value = 1;
 
         //color choosing
-        let selectColor = document.querySelector("select")
-
-        product.colors.forEach(element => {
+        let selectedColor = document.querySelector("select");
+        for (i = 0; i < product.colors.length; i++) {
             let option = document.createElement("option");
-            colors.appendChild(option);
-            option.setAttribute("value", element);
-            option.innerText = element;
-        });
+            option.setAttribute("value", product.colors[i]);
+            option.textContent = product.colors[i];
+            selectedColor.appendChild(option);
+        }
 
         //add au panier
 
