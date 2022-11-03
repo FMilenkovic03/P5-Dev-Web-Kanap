@@ -1,10 +1,11 @@
 //var globales
-const quantity = document.querySelector("#quantity");
-let colors = document.querySelector("#colors").value;
 const str = window.location.href;
 var url = new URL(str);
 let id = url.searchParams.get("id");
 let Url = `http://localhost:3000/api/products/${id}`;
+
+let colors = document.querySelector("#colors").value;
+const quantity = document.querySelector("#quantity");
 
 //fetch
 fetch(Url)
