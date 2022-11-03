@@ -1,5 +1,5 @@
 //récup' produit 
-
+let productInLocalStorage = JSON.parse(localStorage("Products"));
 
 //afficher les produits du panier
 
