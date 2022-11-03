@@ -57,7 +57,7 @@ fetch(Url)
             let productInLocalStorage = [];
             //vérif quantité et couleurs
             if (selectedProduct.color < 1) {
-                alert("Choisissez une couleur ");
+                alert("Choisissez une couleur !");
             } else {
                 if (selectedProduct.Qty < 1) {
                     alert("Choisissez une quantitée entre 1 et 100 ");
@@ -80,7 +80,7 @@ fetch(Url)
 
                                 console.log(
                                     "Ce canapé était déjà dans votre panier, vous en avez maintenant  : ",
-                                 sum
+                                    sum
                                 );
 
                                 const indexAlreadyChosen = productInLocalStorage.indexOf(
@@ -96,11 +96,11 @@ fetch(Url)
                                 JSON.stringify(productInLocalStorage)
                             );
                         } else {
-                            productInLocalStorage.push(selectedProduct); 
+                            productInLocalStorage.push(selectedProduct);
                             localStorage.setItem(
                                 "Products",
                                 JSON.stringify(productInLocalStorage)
-                            ); 
+                            );
                             console.log(productInLocalStorage);
                         }
 
