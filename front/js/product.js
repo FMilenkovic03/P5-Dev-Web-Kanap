@@ -59,55 +59,54 @@ fetch(Url)
             if (selectedProduct.color < 1) {
                 alert("Choisissez une couleur !");
             } else {
-                if (selectedProduct.Qty < 1) {
+                //
+                if (selectedProduct.Qty < 1 || selectedProduct > 100) {
                     alert("Choisissez une quantitée entre 1 et 100 ");
                 } else {
-                    if (selectedProduct.Qty > 100) {
-                        alert("Choisissez une quantitée entre 1 et 100 ");
-                    } else {
-                        if (localStorage.getItem("Products")) {
-                            productInLocalStorage = JSON.parse(
-                                localStorage.getItem("Products")
+                    if (localStorage.getItem("Products")) {
+                        productInLocalStorage = JSON.parse(
+                            localStorage.getItem("Products")
+                        );
+                        //on vérifie le produit 
+                        const alreadyChosen = productInLocalStorage.filter(
+                            (product) =>
+                                product.color === selectedProduct.color &&
+                                product.id === selectedProduct.id
+                        );
+                        //On rajoute le nouveau à l'ancien si doublon
+                        if (alreadyChosen.length) {
+                            let sum = selectedProduct.Qty + alreadyChosen[0].Qty;
+
+                            console.log(
+                                "Ce canapé était déjà dans votre panier, vous en avez maintenant  : ",
+                                sum
                             );
-                            const alreadyChosen = productInLocalStorage.filter(
-                                (product) =>
-                                    product.color === selectedProduct.color &&
-                                    product.id === selectedProduct.id
+
+                            const indexAlreadyChosen = productInLocalStorage.indexOf(
+                                alreadyChosen[0]
                             );
 
-                            if (alreadyChosen.length) {
-                                let sum = selectedProduct.Qty + alreadyChosen[0].Qty;
-
-                                console.log(
-                                    "Ce canapé était déjà dans votre panier, vous en avez maintenant  : ",
-                                    sum
-                                );
-
-                                const indexAlreadyChosen = productInLocalStorage.indexOf(
-                                    alreadyChosen[0]
-                                );
-
-                                productInLocalStorage[indexAlreadyChosen].Qty = sum;
-                            } else {
-                                productInLocalStorage.push(selectedProduct);
-                            }
-                            localStorage.setItem(
-                                "Products",
-                                JSON.stringify(productInLocalStorage)
-                            );
+                            productInLocalStorage[indexAlreadyChosen].Qty = sum;
                         } else {
                             productInLocalStorage.push(selectedProduct);
-                            localStorage.setItem(
-                                "Products",
-                                JSON.stringify(productInLocalStorage)
-                            );
-                            console.log(productInLocalStorage);
                         }
-
-                        console.log("Produit ajouté : ", selectedProduct);
-                        alert("Votre produit est ajouté au panier.");
+                        localStorage.setItem(
+                            "Products",
+                            JSON.stringify(productInLocalStorage)
+                        );
+                    } else {
+                        productInLocalStorage.push(selectedProduct);
+                        localStorage.setItem(
+                            "Products",
+                            JSON.stringify(productInLocalStorage)
+                        );
+                        console.log(productInLocalStorage);
                     }
+
+                    console.log("Produit ajouté : ", selectedProduct);
+                    alert("Votre produit est ajouté au panier.");
                 }
             }
+
         });
     });
