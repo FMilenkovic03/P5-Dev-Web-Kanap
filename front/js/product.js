@@ -28,9 +28,11 @@ fetch(Url)
         quantity.value = 1;
 
         //color choosing
+        let selectColor = document.querySelector("select")
+        
         product.colors.forEach(element => {
             let option = document.createElement("option");
-            color.appendChild(option);
+            colors.appendChild(option);
             option.setAttribute("value", element);
             option.innerText = element;
         });
@@ -41,7 +43,7 @@ fetch(Url)
 
         btn.addEventListener("click", function () {
             //product
-            let product = {
+            let selectedProduct = {
 
                 name: product.name,
                 price: product.price,
@@ -55,11 +57,31 @@ fetch(Url)
 
             let productInLocalStorage = [];
             //vérif quantité et couleurs
-            if(product.color < 1){
+            if(selectedProduct.color < 1){
                 alert("SVP, Choisissez une couleur");
             }
-            if(product.Qty < 1 || product.Qty > 100){
+            if(selectedProduct.Qty < 1 || selectedProduct.Qty > 100){
                 alert("Choisissez une quantité entre 1 et 100.");
+            }
+            //vérification présence dans cart
+            if(localStorage.getItem("Products")){
+                productInLocalStorage = JSON.parse(
+                    localStorage.getItem("Products")
+                );
+                let alreadyChosen = productInLocalStorage.filter(
+                    (product) =>
+                        product.color === selectedProduct.color &&
+                        product.id == selectedProduct.id 
+                );
+                if(alreadyChosen.length){
+                    let final = selectedProduct.Qty + alreadyChosen[0].Qty;
+                    console.log(
+                        "Ce canapé était déjà dans le panier, vous en avez maintenant :", final
+                    );
+                    const indexAlreadyChosen = ProduitInLocalStorage.indexOf(
+                        DejaPresent[0]
+                      );
+                }
             }
             
 
