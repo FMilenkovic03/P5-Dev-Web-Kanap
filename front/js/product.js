@@ -4,8 +4,6 @@ var url = new URL(str);
 let id = url.searchParams.get("id");
 let Url = `http://localhost:3000/api/products/${id}`;
 
-let colors = document.querySelector("#colors").value;
-const quantity = document.querySelector("#quantity");
 
 //fetch
 fetch(Url)
@@ -49,8 +47,8 @@ fetch(Url)
                 imageUrl: product.imageUrl,
                 altTxt: product.altTxt,
                 id: parseInt(id),
-                color: colors,
-                Qty: quantity,
+                color: document.querySelector("#colors").value,
+                Qty: document.querySelector("#quantity").value,
 
             };
 
