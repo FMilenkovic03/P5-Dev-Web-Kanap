@@ -13,7 +13,7 @@ fetch(Url)
         console.log(product);
         //images
         let imageItem = document.querySelector(".item__img");
-        const Img = document.createElement("img");
+        const imgSofa = document.createElement("img");
         imgSofa.src = product.imageUrl;
         imgSofa.alt = product.altTxt;
         imageItem.appendChild(imgSofa);
@@ -53,30 +53,14 @@ fetch(Url)
             };
 
             let productInLocalStorage = [];
-            //vérification de quantité
-            if ((quantity.value >= 0 && quantity.value <= 100) && choiceColor == "") {
-                console.log("SVP, choisissez une couleur");
-                console.log("Choisissez un nombre d'articles entre 1 et 100");
-            } else if ((quantity.value < 0 && quantity.value > 100) || choiceColor !== "") {
-                console.log("La quantité saisie doit être correcte et la couleur saisie !");
-            } else {
-                let cartStorage = JSON.parse(localStorage.getItem("cart"));
-                if (cartStorage) {
-                    const getProductCart = cartStorage;
-                    if (getProductCart) {
-                        getProductCart.quantite += product.quantite;
-                        localStorage.setItem("cart", JSON.stringify(cartStorage));
-                        console.log("Ajout au panier !");
-                    }
-                    cartStorage.push(product);
-                } else {
-                    cartStorage = [];
-                    cartStorage.push(product);
-                }
-                localStorage.setItem("cart", JSON.stringify(cartStorage));
-                console.log("Ajout au panier !");
-
+            //vérif quantité et couleurs
+            if(product.color < 1){
+                alert("SVP, Choisissez une couleur");
             }
+            if(product.Qty < 1 || product.Qty > 100){
+                alert("Choisissez une quantité entre 1 et 100.");
+            }
+            
 
         });
     })
