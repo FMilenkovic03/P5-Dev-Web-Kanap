@@ -58,46 +58,47 @@ fetch(Url)
             //vérif quantité et couleurs
             if (selectedProduct.color < 1) {
                 alert("SVP, Choisissez une couleur");
-            }
-            if (selectedProduct.Qty < 1 || selectedProduct.Qty > 100) {
-                alert("Choisissez une quantité entre 1 et 100.");
-            }
-            //vérification présence dans cart
-            if (localStorage.getItem("Products")) {
-                productInLocalStorage = JSON.parse(
-                    localStorage.getItem("Products")
-                );
-                let alreadyChosen = productInLocalStorage.filter(
-                    (product) =>
-                        product.color === selectedProduct.color &&
-                        product.id == selectedProduct.id
-                );
-                if (alreadyChosen.length) {
-                    let sum = selectedProduct.Qty + alreadyChosen[0].Qty;
-                    console.log(
-                        "Ce canapé était déjà dans le panier, vous en avez maintenant :", sum
-                    );
-                    const indexAlreadyChosen = ProduitInLocalStorage.indexOf(
-                        DejaPresent[0]
-                    );
-                    productInLocalStorage[indexAlreadyChosen] = productInLocalStorage.indexOf(
-                        alreadyChosen[0]
-                    );
-                    productInLocalStorage[indexAlreadyChosen].Qty = sum;
-                }
             } else {
-                productInLocalStorage.push(selectedProduct);
-                localStorage.setItem(
-                    "Products",
-                    JSON.stringify(productInLocalStorage)
-                );
-                console.log(productInLocalStorage);
+                if (selectedProduct.Qty < 1 || selectedProduct.Qty > 100) {
+                    alert("Choisissez une quantité entre 1 et 100.");
+                } else {
+                    //vérification présence dans cart
+                    if (localStorage.getItem("Products")) {
+                        productInLocalStorage = JSON.parse(
+                            localStorage.getItem("Products")
+                        );
+                        let alreadyChosen = productInLocalStorage.filter(
+                            (product) =>
+                                product.color === selectedProduct.color &&
+                                product.id == selectedProduct.id
+                        );
+                        if (alreadyChosen.length) {
+                            let sum = selectedProduct.Qty + alreadyChosen[0].Qty;
+                            console.log(
+                                "Ce canapé était déjà dans le panier, vous en avez maintenant :", sum
+                            );
+                            const indexAlreadyChosen = ProduitInLocalStorage.indexOf(
+                                DejaPresent[0]
+                            );
+                            productInLocalStorage[indexAlreadyChosen] = productInLocalStorage.indexOf(
+                                alreadyChosen[0]
+                            );
+                            productInLocalStorage[indexAlreadyChosen].Qty = sum;
+                        }
+                    } else {
+                        productInLocalStorage.push(selectedProduct);
+                        localStorage.setItem(
+                            "Products",
+                            JSON.stringify(productInLocalStorage)
+                        );
+                        console.log(productInLocalStorage);
+                    }
+                    console.log("Ajout de :", selectedProduct);
+                    alert("Produit ajouté au panier !");
+
+                }
+
             }
-            console.log("Ajout de :", selectedProduct);
-            alert("Produit ajouté au panier !");
 
-        }
-
-
-        );
-    })
+        });
+    });
