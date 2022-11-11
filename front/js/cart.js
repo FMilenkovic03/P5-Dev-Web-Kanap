@@ -123,3 +123,10 @@ qtyModifier.forEach((modifier) => {
         totalQuantity(productInLocalStorage);
     });
 });
+
+const firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
+const lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
+const addressErrorMsg = document.getElementById("addressErrorMsg");
+const cityErrorMsg = document.getElementById("cityErrorMsg");
+const emailErrorMsg = document.getElementById("emailErrorMsg");
+const formSubmit = document.getElementById("order");
