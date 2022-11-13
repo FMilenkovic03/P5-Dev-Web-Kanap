@@ -146,10 +146,10 @@ function formSubmit(productInLocalStorage, formulaire) {
         })
         .then((response) => response.json())
         .then((product) => {
-            window.location = `confirmation.html?orderId=${data.orderId}`;
+            window.location = `confirmation.html?orderId=${product.orderId}`;
         })
         .catch((error) =>
-            alert("erreur")
+            alert("erreur de type:" + error)
         );
 
 }
