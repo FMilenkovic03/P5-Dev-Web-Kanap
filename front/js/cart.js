@@ -133,6 +133,7 @@ const formSubmit = document.getElementById("order");
 
 //formulaire remplissage et envoi
 
-function formSubmit() {
+function formSubmit(productInLocalStorage, formulaire) {
+    productInLocalStorage = [];
 
 }
