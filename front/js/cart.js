@@ -145,4 +145,11 @@ function formSubmit(productInLocalStorage, formulaire) {
             body: JSON.stringify({ formulaire, products }),
         })
         .then((response) => response.json())
+        .then((product) => {
+            window.location = `confirmation.html?orderId=${data.orderId}`;
+        })
+        .catch((error) =>
+            alert("erreur")
+        );
+
 }
