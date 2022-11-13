@@ -134,6 +134,15 @@ const formSubmit = document.getElementById("order");
 //formulaire remplissage et envoi
 
 function formSubmit(productInLocalStorage, formulaire) {
-    productInLocalStorage = [];
-
+    let products = [];
+    for (i = 0; i < productInLocalStorage; i++) {
+        let Id = productInLocalStorage.id;
+        products.push(Id);
+    }
+    fetch("http://localhost:3000/api/products/order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ formulaire, products }),
+        })
+        .then((response) => response.json())
 }
