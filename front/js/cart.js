@@ -130,3 +130,9 @@ const addressErrorMsg = document.getElementById("addressErrorMsg");
 const cityErrorMsg = document.getElementById("cityErrorMsg");
 const emailErrorMsg = document.getElementById("emailErrorMsg");
 const formSubmit = document.getElementById("order");
+
+//formulaire remplissage et envoi
+
+function formSubmit() {
+
+}
