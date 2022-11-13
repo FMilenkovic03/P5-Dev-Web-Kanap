@@ -155,3 +155,4 @@ function formSubmit(productInLocalStorage, formulaire) {
 }
 
 //event listener au clic pour la récup de données des formulaires
+//regex
