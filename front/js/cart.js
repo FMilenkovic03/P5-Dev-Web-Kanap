@@ -171,11 +171,11 @@ submitButton.addEventListener("click", (event) => {
     cityVerify = document.querySelector("#city").value;
     emailVerify = document.querySelector("#email").value;
 
-    verifyform(firstNameVerify, firstNameErrorMsg, regexNameCity);
-    verifyform(lastNameVerify, lastNameErrorMsg, regexNameCity);
-    verifyform(addressVerify, addressErrorMsg, regexAddress);
-    verifyform(cityVerify, cityErrorMsg, regexNameCity);
-    verifyform(emailVerify, emailErrorMsg, regexEmail);
+    verifyForm(firstNameVerify, firstNameErrorMsg, regexNameCity);
+    verifyForm(lastNameVerify, lastNameErrorMsg, regexNameCity);
+    verifyForm(addressVerify, addressErrorMsg, regexAddress);
+    verifyForm(cityVerify, cityErrorMsg, regexNameCity);
+    verifyForm(emailVerify, emailErrorMsg, regexEmail);
 
     const formulaire = {
         firstName: firstNameVerify,
