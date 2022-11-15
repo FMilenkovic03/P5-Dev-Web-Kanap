@@ -171,9 +171,9 @@ submitButton.addEventListener("click", (event) => {
     city = document.querySelector("#city").value;
     email = document.querySelector("#email").value;
 
-    verifyform();
-    verifyform();
-    verifyform();
-    verifyform();
-    verifyform();
+    verifyform(firstName, firstNameErrorMsg, regexNameCity);
+    verifyform(lastName, lastNameErrorMsg, regexNameCity);
+    verifyform(address, addressErrorMsg, regexAddress);
+    verifyform(city, cityErrorMsg, regexNameCity);
+    verifyform(email, emailErrorMsg, regexEmail);
 })
