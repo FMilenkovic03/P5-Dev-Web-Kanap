@@ -176,4 +176,39 @@ submitButton.addEventListener("click", (event) => {
     verifyform(address, addressErrorMsg, regexAddress);
     verifyform(city, cityErrorMsg, regexNameCity);
     verifyform(email, emailErrorMsg, regexEmail);
-})
+
+    const formulaire = {
+        firstName,
+        lastName,
+        address,
+        city,
+        email,
+    };
+    if (verifyForm(firstName, firstNameErrorMsg, regexNameCity) &&
+        verifyForm(lastName, lastNameErrorMsg, regexNameCity) &&
+        verifyForm(address, addressErrorMsg, regexAddress) &&
+        verifyForm(city, cityErrorMsg, regexNameCity) &&
+        verifyForm(email, emailErrorMsg, regexEmail) &&
+        productInLocalStorage.length >= 1) {
+        formSubmit(productInLocalStorage, formulaire);
+    } else {
+        alert("Formulaire invalide ! Vérifiez vos informations.");
+    }
+});
+
+//verif infos selon regex
+function verifyForm(eltFormulaire, eltError, eltRegex) {
+    //si input vide
+    if (eltFormulaire.length === 0) {
+        eltError.innerText = "Veuillez renseigner ce champ";
+        return false;
+    } else if (!eltRegex.test(eltFormulaire)) {
+        // si input nonvide regex invalide
+        eltError.innerText = "Format incorrect";
+        return false;
+    } else {
+        // sinon tout il est bon
+        eltError.innerText = "";
+        return true;
+    }
+}
