@@ -155,7 +155,7 @@ const lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
 const addressErrorMsg = document.getElementById("addressErrorMsg");
 const cityErrorMsg = document.getElementById("cityErrorMsg");
 const emailErrorMsg = document.getElementById("emailErrorMsg");
-const formSubmit = document.getElementById("order");
+
 const submitButton = document.getElementById("order");
 const regexNameCity = /^[a-zA-ZÀ-ÿ_-]{2,60}$/;
 const regexAddress = /^[#.0-9a-zA-ZÀ-ÿ\s,-]{2,60}$/;
