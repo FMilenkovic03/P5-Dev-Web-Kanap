@@ -207,7 +207,7 @@ function verifyForm(eltFormulaire, eltError, eltRegex) {
         eltError.innerText = "Format incorrect";
         return false;
     } else {
-        // sinon tout il est bon
+        // sinon regex et input sont corrects
         eltError.innerText = "";
         return true;
     }
