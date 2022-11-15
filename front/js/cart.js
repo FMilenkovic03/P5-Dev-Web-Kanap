@@ -3,7 +3,17 @@ let productInLocalStorage = JSON.parse(localStorage.getItem("Products"));
 let url = "http://localhost:3000/api/products/";
 
 
+//declaration
+const firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
+const lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
+const addressErrorMsg = document.getElementById("addressErrorMsg");
+const cityErrorMsg = document.getElementById("cityErrorMsg");
+const emailErrorMsg = document.getElementById("emailErrorMsg");
 
+const submitButton = document.getElementById("order");
+const regexNameCity = /^[a-zA-ZÀ-ÿ_-]{2,60}$/;
+const regexAddress = /^[#.0-9a-zA-ZÀ-ÿ\s,-]{2,60}$/;
+const regexEmail = /^[^@\s]{2,30}@[^@\s]{2,30}\.[^@\s]{2,5}$/;
 //afficher les produits du panier
 
 
@@ -149,17 +159,7 @@ function formSubmit(productInLocalStorage, formulaire) {
         );
 
 }
-//declaration
-const firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
-const lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
-const addressErrorMsg = document.getElementById("addressErrorMsg");
-const cityErrorMsg = document.getElementById("cityErrorMsg");
-const emailErrorMsg = document.getElementById("emailErrorMsg");
 
-const submitButton = document.getElementById("order");
-const regexNameCity = /^[a-zA-ZÀ-ÿ_-]{2,60}$/;
-const regexAddress = /^[#.0-9a-zA-ZÀ-ÿ\s,-]{2,60}$/;
-const regexEmail = /^[^@\s]{2,30}@[^@\s]{2,30}\.[^@\s]{2,5}$/;
 //event listener au clic pour la récup de données des formulaires
 //regex
 
