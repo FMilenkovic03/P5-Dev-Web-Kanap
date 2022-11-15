@@ -2,6 +2,13 @@
 let productInLocalStorage = JSON.parse(localStorage.getItem("Products"));
 let url = "http://localhost:3000/api/products/";
 
+const firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
+const lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
+const addressErrorMsg = document.getElementById("addressErrorMsg");
+const cityErrorMsg = document.getElementById("cityErrorMsg");
+const emailErrorMsg = document.getElementById("emailErrorMsg");
+const formSubmit = document.getElementById("order");
+
 //afficher les produits du panier
 
 
@@ -124,12 +131,6 @@ qtyModifier.forEach((modifier) => {
     });
 });
 
-const firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
-const lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
-const addressErrorMsg = document.getElementById("addressErrorMsg");
-const cityErrorMsg = document.getElementById("cityErrorMsg");
-const emailErrorMsg = document.getElementById("emailErrorMsg");
-const formSubmit = document.getElementById("order");
 
 //formulaire remplissage et envoi
 
