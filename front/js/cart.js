@@ -171,4 +171,9 @@ submitButton.addEventListener("click", (event) => {
     city = document.querySelector("#city").value;
     email = document.querySelector("#email").value;
 
+    verifyform();
+    verifyform();
+    verifyform();
+    verifyform();
+    verifyform();
 })
