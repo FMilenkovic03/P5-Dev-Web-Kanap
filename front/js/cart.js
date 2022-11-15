@@ -165,30 +165,30 @@ function formSubmit(productInLocalStorage, formulaire) {
 
 submitButton.addEventListener("click", (event) => {
     event.preventDefault();
-    firstName = document.querySelector("#firstName").value;
-    lastName = document.querySelector("#lastName").value;
-    address = document.querySelector("#address").value;
-    city = document.querySelector("#city").value;
-    email = document.querySelector("#email").value;
+    firstNameVerify = document.querySelector("#firstName").value;
+    lastNameVerify = document.querySelector("#lastName").value;
+    addressVerify = document.querySelector("#address").value;
+    cityVerify = document.querySelector("#city").value;
+    emailVerify = document.querySelector("#email").value;
 
-    verifyform(firstName, firstNameErrorMsg, regexNameCity);
-    verifyform(lastName, lastNameErrorMsg, regexNameCity);
-    verifyform(address, addressErrorMsg, regexAddress);
-    verifyform(city, cityErrorMsg, regexNameCity);
-    verifyform(email, emailErrorMsg, regexEmail);
+    verifyform(firstNameVerify, firstNameErrorMsg, regexNameCity);
+    verifyform(lastNameVerify, lastNameErrorMsg, regexNameCity);
+    verifyform(addressVerify, addressErrorMsg, regexAddress);
+    verifyform(cityVerify, cityErrorMsg, regexNameCity);
+    verifyform(emailVerify, emailErrorMsg, regexEmail);
 
     const formulaire = {
-        firstName,
-        lastName,
-        address,
-        city,
-        email,
+        firstName: firstNameVerify,
+        lastName: lastNameVerify,
+        address: addressVerify,
+        city: cityVerify,
+        email: emailVerify,
     };
-    if (verifyForm(firstName, firstNameErrorMsg, regexNameCity) &&
-        verifyForm(lastName, lastNameErrorMsg, regexNameCity) &&
-        verifyForm(address, addressErrorMsg, regexAddress) &&
-        verifyForm(city, cityErrorMsg, regexNameCity) &&
-        verifyForm(email, emailErrorMsg, regexEmail) &&
+    if (verifyForm(firstNameVerify, firstNameErrorMsg, regexNameCity) &&
+        verifyForm(lastNameVerify, lastNameErrorMsg, regexNameCity) &&
+        verifyForm(addressVerify, addressErrorMsg, regexAddress) &&
+        verifyForm(cityVerify, cityErrorMsg, regexNameCity) &&
+        verifyForm(emailVerify, emailErrorMsg, regexEmail) &&
         productInLocalStorage.length >= 1) {
         formSubmit(productInLocalStorage, formulaire);
     } else {
