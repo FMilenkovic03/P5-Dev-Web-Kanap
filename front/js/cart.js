@@ -139,7 +139,7 @@ qtyModifier.forEach((modifier) => {
 
 //formulaire remplissage et envoi
 
-function formSubmit(productInLocalStorage, formulaire) {
+function formSubmit(productInLocalStorage, contact) {
     let products = [];
     for (i = 0; i < productInLocalStorage; i++) {
         let Id = productInLocalStorage.id;
@@ -148,10 +148,11 @@ function formSubmit(productInLocalStorage, formulaire) {
     fetch("http://localhost:3000/api/products/order", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ formulaire, products }),
+            body: JSON.stringify({ contact, products }),
         })
         .then((response) => response.json())
         .then((product) => {
+            console.log(products);
             window.location = `confirmation.html?orderId=${product.orderId}`;
         })
         .catch((error) =>
@@ -177,7 +178,7 @@ submitButton.addEventListener("click", (event) => {
     verifyForm(cityVerify, cityErrorMsg, regexNameCity);
     verifyForm(emailVerify, emailErrorMsg, regexEmail);
 
-    const formulaire = {
+    const contact = {
         firstName: firstNameVerify,
         lastName: lastNameVerify,
         address: addressVerify,
@@ -190,7 +191,7 @@ submitButton.addEventListener("click", (event) => {
         verifyForm(cityVerify, cityErrorMsg, regexNameCity) &&
         verifyForm(emailVerify, emailErrorMsg, regexEmail) &&
         productInLocalStorage.length >= 1) {
-        formSubmit(productInLocalStorage, formulaire);
+        formSubmit(productInLocalStorage, contact);
     } else {
         alert("Formulaire invalide ! Vérifiez vos informations.");
     }

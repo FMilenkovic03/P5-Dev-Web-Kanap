@@ -44,12 +44,10 @@ fetch(Url)
             let selectedProduct = {
 
                 name: product.name,
-                price: product.price,
                 imageUrl: product.imageUrl,
-                altTxt: product.altTxt,
                 id: parseInt(id),
                 color: document.querySelector("#colors").value,
-                Qty: document.querySelector("#quantity").value,
+                qty: document.querySelector("#quantity").value,
 
             };
             //déclaration du storage
@@ -59,7 +57,7 @@ fetch(Url)
                 alert("Choisissez une couleur !");
             } else {
                 //
-                if (selectedProduct.Qty < 1 || selectedProduct > 100) {
+                if (selectedProduct.qty < 1 || selectedProduct > 100) {
                     alert("Choisissez une quantitée entre 1 et 100 ");
                     //sinon (ou si les conditions remplies, on passe à l'ajout au panier)
                 } else {
@@ -75,7 +73,7 @@ fetch(Url)
                         );
                         //On rajoute le nouveau à l'ancien si doublon
                         if (alreadyChosen.length) {
-                            let sum = selectedProduct.Qty + alreadyChosen[0].Qty;
+                            let sum = selectedProduct.qty + alreadyChosen[0].qty;
 
                             console.log(
                                 "Ce canapé était déjà dans votre panier, vous en avez maintenant  : ",
@@ -86,7 +84,7 @@ fetch(Url)
                                 alreadyChosen[0]
                             );
 
-                            productInLocalStorage[indexAlreadyChosen].Qty = sum;
+                            productInLocalStorage[indexAlreadyChosen].qty = sum;
                         } else {
                             //sinon, on push le selected produit dans le storage
                             productInLocalStorage.push(selectedProduct);
