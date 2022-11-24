@@ -46,6 +46,7 @@ fetch(Url)
                 name: product.name,
                 imageUrl: product.imageUrl,
                 id: parseInt(id),
+                prix: product.price,
                 color: document.querySelector("#colors").value,
                 qty: document.querySelector("#quantity").value,
 
