@@ -126,7 +126,7 @@ qtyModifier.forEach((modifier) => {
 
 
             if (elt.id == id && elt.color == color) {
-                elt.qty = newQuantity;
+                elt.Qty = newQuantity;
             }
         });
 
