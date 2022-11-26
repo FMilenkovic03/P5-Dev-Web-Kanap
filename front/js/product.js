@@ -43,7 +43,7 @@ fetch(Url)
             //product
             let selectedProduct = {
 
-                id: parseInt(id),
+                id: id,
                 color: document.querySelector("#colors").value,
                 qty: document.querySelector("#quantity").value,
 
