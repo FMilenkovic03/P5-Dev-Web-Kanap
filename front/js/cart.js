@@ -17,35 +17,84 @@ const regexEmail = /^[^@\s]{2,30}@[^@\s]{2,30}\.[^@\s]{2,5}$/;
 //afficher les produits du panier
 
 
-if (productInLocalStorage == null) {
-    productInLocalStorage = [];
-} else {
-    for (i = 0; i < productInLocalStorage.length; i++) {
-        document.getElementById("cart__items").innerHTML += `
-            <article class="cart__item" data-id="${productInLocalStorage[i].id}" data-color="${productInLocalStorage[i].color}">
-                        <div class="cart__item__img">
-                          <img src="${productInLocalStorage[i].imageUrl}" alt="${productInLocalStorage[i].altTxt}">
-                        </div>
-                        <div class="cart__item__content">
-                          <div class="cart__item__content__description">
-                            <h2>${productInLocalStorage[i].name}</h2>
-                            <p>${productInLocalStorage[i].color}</p>
-                            <p>${productInLocalStorage[i].price} €</p>
-                          </div>
-                          <div class="cart__item__content__settings">
-                            <div class="cart__item__content__settings__quantity">
-                              <p>Qté : </p>
-                              <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" product=${productInLocalStorage[i].quantity}>
-                            </div>
-                            <div class="cart__item__content__settings__delete">
-                              <p class="deleteItem">Supprimer</p>
-                            </div>
-                          </div>
-                        </div>
-                      </article>`;
-    }
-}
+//if (productInLocalStorage == null) {
+//    productInLocalStorage = [];
+//} else {
+//    for (i = 0; i < productInLocalStorage.length; i++) {
+//       document.getElementById("cart__items").innerHTML += `
+//            <article class="cart__item" data-id="${productInLocalStorage[i].id}" data-color="${productInLocalStorage[i].color}">
+//                        <div class="cart__item__img">
+//                         <img src="${productInLocalStorage[i].imageUrl}" alt="${productInLocalStorage[i].altTxt}">
+//                        </div>
+//                        <div class="cart__item__content">
+//                          <div class="cart__item__content__description">
+//                            <h2>${productInLocalStorage[i].name}</h2>
+//                            <p>${productInLocalStorage[i].color}</p>
+//                            <p>${productInLocalStorage[i].price} €</p>
+//                          </div>
+//                         <div class="cart__item__content__settings">
+//                            <div class="cart__item__content__settings__quantity">
+//                              <p>Qté : </p>
+//                              <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" product=${productInLocalStorage[i].quantity}>
+//                            </div>
+//                            <div class="cart__item__content__settings__delete">
+//                              <p class="deleteItem">Supprimer</p>
+//                            </div>
+//                          </div>
+//                        </div>
+//                      </article>`;
+//    }
+//}
 
+document.addEventListener("DOMContentLoaded", function () {
+    //récupérer la liste des id produits (c fait)
+    console.log(productInLocalStorage);
+    let products = [];
+    for (i = 0; i < productInLocalStorage.length; i++) {
+        console.log(productInLocalStorage[i].id);
+        products.push(productInLocalStorage[i].id);
+    }
+    console.log(products);
+    //pr chaque produit, appeler une url du backend pour recup détail produit (fait)
+    products.forEach((id) => {
+        alert(id);
+        fetch(`http://localhost:3000/api/products/${id}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        })
+            .then((response) => response.json())
+            .then((product) => {
+                document.getElementById("cart__items").innerHTML += `
+           <article class="cart__item" data-id="${product.id}" data-color="${product.color}">
+                       <div class="cart__item__img">
+                         <img src="${product.imageUrl}" alt="${product.altTxt}">
+                       </div>
+                       <div class="cart__item__content">
+                         <div class="cart__item__content__description">
+                           <h2>${product.name}</h2>
+                           <p>${product.color}</p>
+                           <p>${product.price} €</p>
+                         </div>
+                         <div class="cart__item__content__settings">
+                           <div class="cart__item__content__settings__quantity">
+                             <p>Qté : </p>
+                             <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" product=${product.quantity}>
+                           </div>
+                           <div class="cart__item__content__settings__delete">
+                             <p class="deleteItem">Supprimer</p>
+                           </div>
+                         </div>
+                       </div>
+                     </article>`;
+            })
+            .catch((error) =>
+                alert("erreur de type:" + error)
+            );
+    })
+
+    //stocker dans un array pour l'afficher à un utilisateur
+    products.push(product);
+});
 
 //call of quantity
 function totalQuantity(productInLocalStorage) {
@@ -146,10 +195,10 @@ function formSubmit(productInLocalStorage, contact) {
         products.push(Id);
     }
     fetch("http://localhost:3000/api/products/order", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ contact, products }),
-        })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contact, products }),
+    })
         .then((response) => response.json())
         .then((product) => {
             console.log(products);
@@ -161,56 +210,7 @@ function formSubmit(productInLocalStorage, contact) {
 
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-     //récupérer la liste des id produits (c fait)
-     alert("toto");
-     console.log(productInLocalStorage);
-    let products = [];
-    for (i = 0; i < productInLocalStorage.length; i++) {
-        console.log(productInLocalStorage[i].id);
-        products.push(productInLocalStorage[i].id);
-    }
-    console.log(products);
-    //pr chaque produit, appeler une url du backend pour recup détail produit
-    products.forEach((id) => {
-        alert(id);
-        fetch(`http://localhost:3000/api/products/${id}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        })
-        .then((response) => response.json())
-        .then((product) => {
-            document.getElementById("cart__items").innerHTML += `
-            <article class="cart__item" data-id="${product.id}" data-color="${product.color}">
-                        <div class="cart__item__img">
-                          <img src="${product.imageUrl}" alt="${product.altTxt}">
-                        </div>
-                        <div class="cart__item__content">
-                          <div class="cart__item__content__description">
-                            <h2>${product.name}</h2>
-                            <p>${product.color}</p>
-                            <p>${product.price} €</p>
-                          </div>
-                          <div class="cart__item__content__settings">
-                            <div class="cart__item__content__settings__quantity">
-                              <p>Qté : </p>
-                              <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" product=${product.quantity}>
-                            </div>
-                            <div class="cart__item__content__settings__delete">
-                              <p class="deleteItem">Supprimer</p>
-                            </div>
-                          </div>
-                        </div>
-                      </article>`;
-        })
-        .catch((error) =>
-            alert("erreur de type:" + error)
-        );
-    })
-    
-    //stocker dans un array pour l'afficher à un utilisateur
-   
-  });
+
 
 //event listener au clic pour la récup de données des formulaires
 //regex
