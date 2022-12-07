@@ -91,6 +91,7 @@ fetch(Url)
                             "Products",
                             JSON.stringify(productInLocalStorage)
                         );
+  
                     } else {
                         productInLocalStorage.push(selectedProduct);
                         localStorage.setItem(

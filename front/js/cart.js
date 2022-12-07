@@ -1,6 +1,6 @@
 //récup' produit 
 let productInLocalStorage = JSON.parse(localStorage.getItem("Products"));
-let url = "http://localhost:3000/api/products/8906";
+let url = "http://localhost:3000/api/products/";
 
 
 //declaration
@@ -64,6 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then((response) => response.json())
             .then((product) => {
+                console.log(product);
+                let selectedColor = productInLocalStorage.filter(
+                    (productInStorage) =>
+                        productInStorage.id === product._id
+                )[0].color;
+                console.log(selectedColor[0].color);
                 document.getElementById("cart__items").innerHTML += `
            <article class="cart__item" data-id="${product.id}" data-color="${product.color}">
                        <div class="cart__item__img">
@@ -72,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                        <div class="cart__item__content">
                          <div class="cart__item__content__description">
                            <h2>${product.name}</h2>
-                           <p>${product.color}</p>
+                           <p>${selectedColor}</p>
                            <p>${product.price} €</p>
                          </div>
                          <div class="cart__item__content__settings">
@@ -93,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     //stocker dans un array pour l'afficher à un utilisateur
-    products.push(product);
+    
 });
 
 //call of quantity
