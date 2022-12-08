@@ -34,12 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then((response) => response.json())
             .then((product) => {
-                //console.log(product);
+                
                 let selectedColor = productInLocalStorage.filter(
                     (productInStorage) =>
                         productInStorage.id === product._id
                 )[0].color;
-                //console.log(selectedColor[0].color);
+                
                 document.getElementById("cart__items").innerHTML += `
            <article class="cart__item" data-id="${product.id}" data-color="${product.color}">
                        <div class="cart__item__img">
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                          <div class="cart__item__content__settings">
                            <div class="cart__item__content__settings__quantity">
                              <p>Qté : </p>
-                             <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" product=${product.quantity}>
+                             <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" product=${product.qty}>
                            </div>
                            <div class="cart__item__content__settings__delete">
                              <p class="deleteItem">Supprimer</p>
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function totalQuantity(productInLocalStorage) {
     const arrayQty = [];
     for (let iterator of productInLocalStorage) {
-        arrayQty.push(iterator.quantity);
+        arrayQty.push(iterator.qty);
         const addition = (previousQty, currentQty) =>
             previousQty + currentQty;
         const totalQuantity = arrayQty.reduce(addition);
