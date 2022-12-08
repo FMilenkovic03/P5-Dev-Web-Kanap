@@ -100,16 +100,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //call of quantity
-function totalQuantity(product) {
-    const Qty = [];
-    for (let iterator of product) {
-        Qty.push(iterator.quantity);
+function totalQuantity(Products) {
+    const arrayQty = [];
+    for (let iterator of Products) {
+        arrayQty.push(iterator.quantity);
         const addition = (previousQty, currentQty) =>
             previousQty + currentQty;
-        const totalQuantity = Qty.reduce(addition);
+        const totalQuantity = arrayQty.reduce(addition);
         document.getElementById("totalQuantity").innerText = totalQuantity;
     }
-    if (Qty.length === 0) {
+    if (arrayQty.length === 0) {
         document.querySelector("h1").innerText = "Panier vide";
         totalQuantity = "";
         document.getElementById("totalQuantity").innerText = totalQuantity;
@@ -118,11 +118,11 @@ function totalQuantity(product) {
 
 //call of price
 
-function priceTotal(productInLocalStorage) {
+function priceTotal(Products) {
     let totalPriceQty = "";
     let priceArray = [];
-    for (let iterator of productInLocalStorage) {
-        totalPriceQty = iterator.price * iterator.Qty;
+    for (let iterator of Products) {
+        totalPriceQty = iterator.price * iterator.arrayQty;
         priceArray.push(totalPriceQty);
         const addition = (previousPrice, currentPrice) =>
             previousPrice + currentPrice;
