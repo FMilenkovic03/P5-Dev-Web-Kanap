@@ -109,7 +109,7 @@ function priceTotal(productInLocalStorage) {
 //bouton delete 
 
 let erase = document.querySelectorAll(".deleteItem");
-
+console.log(erase);
 erase.forEach((button) => {
     const buttonClosest = button.closest("article");
     const id = buttonClosest.dataset.id;
@@ -117,6 +117,7 @@ erase.forEach((button) => {
     const color = buttonClosest.dataset.color;
 
     button.addEventListener("click", (event) => {
+        console.log(event);
         event.preventDefault;
         productInLocalStorage.forEach((iterator) => {
             if (iterator.id == id && iterator.color == color) {
@@ -152,7 +153,6 @@ qtyModifier.forEach((modifier) => {
                 iterator.qty = newQty;
             }
         });
-
         localStorage.setItem("Products", JSON.stringify(productInLocalStorage));
         priceTotal(productInLocalStorage);
         totalQuantity(productInLocalStorage);
