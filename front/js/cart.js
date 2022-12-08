@@ -97,9 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("erreur de type:" + error)
             );
     })
-
-    //stocker dans un array pour l'afficher à un utilisateur
-    
 });
 
 //call of quantity
