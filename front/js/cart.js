@@ -146,9 +146,7 @@ erase.forEach((button) => {
     const color = buttonClosest.dataset.color;
 
     button.addEventListener("click", (event) => {
-        alert("toto")
         event.preventDefault;
-        alert("toto");
         Products.forEach((iterator) => {
             if (iterator.id == id && iterator.color == color) {
                 let index = Products.indexOf(iterator);
