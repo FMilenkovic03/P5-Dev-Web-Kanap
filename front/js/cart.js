@@ -157,8 +157,8 @@ erase.forEach((button) => {
             }
         });
         localStorage.setItem("Products", JSON.stringify(productInLocalStorage));
-        priceTotal(productInLocalStorage);
-        totalQuantity(productInLocalStorage);
+        priceTotal(Products);
+        totalQuantity(Products);
     });
 });
 
