@@ -146,13 +146,15 @@ erase.forEach((button) => {
     const color = buttonClosest.dataset.color;
 
     button.addEventListener("click", (event) => {
+        alert("toto")
         event.preventDefault;
-        productInLocalStorage.forEach((iterator) => {
+        alert("toto");
+        Products.forEach((iterator) => {
             if (iterator.id == id && iterator.color == color) {
-                let index = productInLocalStorage.indexOf(iterator);
+                let index = Products.indexOf(iterator);
                 if (confirm("Supprimer l'article ?")) {
                     article.remove();
-                    productInLocalStorage.splice(index, 1);
+                    Products.splice(index, 1);
                 }
             }
         });
