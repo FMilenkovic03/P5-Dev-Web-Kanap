@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(productInLocalStorage[i].id);
         products.push(productInLocalStorage[i].id);
     }
-    console.log(products);
+    //console.log(products);
     //pr chaque produit, appeler une url du backend pour recup détail produit (fait)
     products.forEach((id) => {
         alert(id);
@@ -64,12 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then((response) => response.json())
             .then((product) => {
-                console.log(product);
+                //console.log(product);
                 let selectedColor = productInLocalStorage.filter(
                     (productInStorage) =>
                         productInStorage.id === product._id
                 )[0].color;
-                console.log(selectedColor[0].color);
+                //console.log(selectedColor[0].color);
                 document.getElementById("cart__items").innerHTML += `
            <article class="cart__item" data-id="${product.id}" data-color="${product.color}">
                        <div class="cart__item__img">
@@ -100,9 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //call of quantity
-function totalQuantity(productInLocalStorage) {
+function totalQuantity(product) {
     const Qty = [];
-    for (let iterator of productInLocalStorage) {
+    for (let iterator of product) {
         Qty.push(iterator.quantity);
         const addition = (previousQty, currentQty) =>
             previousQty + currentQty;
