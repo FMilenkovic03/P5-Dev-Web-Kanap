@@ -14,6 +14,7 @@ const submitButton = document.getElementById("order");
 const regexNameCity = /^[a-zA-ZÀ-ÿ_-]{2,60}$/;
 const regexAddress = /^[#.0-9a-zA-ZÀ-ÿ\s,-]{2,60}$/;
 const regexEmail = /^[^@\s]{2,30}@[^@\s]{2,30}\.[^@\s]{2,5}$/;
+
 //afficher les produits du panier
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -137,18 +138,18 @@ erase.forEach((button) => {
 const qtyModifier = document.querySelectorAll(".itemQuantity");
 qtyModifier.forEach((modifier) => {
     const modifierClosest = modifier.closest("article");
-    let newQuantity = "";
+    let newQty = "";
     const id = modifierClosest.dataset.id;
     const color = modifierClosest.dataset.color;
 
     modifier.addEventListener("change", (event) => {
         event.preventDefault();
-        newQuantity = Number(modifier.value);
-        productInLocalStorage.forEach((elt) => {
+        newQty = Number(modifier.value);
+        productInLocalStorage.forEach((iterator) => {
 
 
-            if (elt.id == id && elt.color == color) {
-                elt.qty = newQuantity;
+            if (iterator.id == id && iterator.color == color) {
+                iterator.qty = newQty;
             }
         });
 
