@@ -16,36 +16,6 @@ const regexAddress = /^[#.0-9a-zA-ZÀ-ÿ\s,-]{2,60}$/;
 const regexEmail = /^[^@\s]{2,30}@[^@\s]{2,30}\.[^@\s]{2,5}$/;
 //afficher les produits du panier
 
-
-//if (productInLocalStorage == null) {
-//    productInLocalStorage = [];
-//} else {
-//    for (i = 0; i < productInLocalStorage.length; i++) {
-//       document.getElementById("cart__items").innerHTML += `
-//            <article class="cart__item" data-id="${productInLocalStorage[i].id}" data-color="${productInLocalStorage[i].color}">
-//                        <div class="cart__item__img">
-//                         <img src="${productInLocalStorage[i].imageUrl}" alt="${productInLocalStorage[i].altTxt}">
-//                        </div>
-//                        <div class="cart__item__content">
-//                          <div class="cart__item__content__description">
-//                            <h2>${productInLocalStorage[i].name}</h2>
-//                            <p>${productInLocalStorage[i].color}</p>
-//                            <p>${productInLocalStorage[i].price} €</p>
-//                          </div>
-//                         <div class="cart__item__content__settings">
-//                            <div class="cart__item__content__settings__quantity">
-//                              <p>Qté : </p>
-//                              <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" product=${productInLocalStorage[i].quantity}>
-//                            </div>
-//                            <div class="cart__item__content__settings__delete">
-//                              <p class="deleteItem">Supprimer</p>
-//                            </div>
-//                          </div>
-//                        </div>
-//                      </article>`;
-//    }
-//}
-
 document.addEventListener("DOMContentLoaded", function () {
     //récupérer la liste des id produits (c fait)
     console.log(productInLocalStorage);
@@ -100,9 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //call of quantity
-function totalQuantity(Products) {
+function totalQuantity(productInLocalStorage) {
     const arrayQty = [];
-    for (let iterator of Products) {
+    for (let iterator of productInLocalStorage) {
         arrayQty.push(iterator.quantity);
         const addition = (previousQty, currentQty) =>
             previousQty + currentQty;
@@ -118,10 +88,10 @@ function totalQuantity(Products) {
 
 //call of price
 
-function priceTotal(Products) {
+function priceTotal(productInLocalStorage) {
     let totalPriceQty = "";
     let priceArray = [];
-    for (let iterator of Products) {
+    for (let iterator of productInLocalStorage) {
         totalPriceQty = iterator.price * iterator.arrayQty;
         priceArray.push(totalPriceQty);
         const addition = (previousPrice, currentPrice) =>
@@ -147,18 +117,18 @@ erase.forEach((button) => {
 
     button.addEventListener("click", (event) => {
         event.preventDefault;
-        Products.forEach((iterator) => {
+        productInLocalStorage.forEach((iterator) => {
             if (iterator.id == id && iterator.color == color) {
-                let index = Products.indexOf(iterator);
+                let index = productInLocalStorage.indexOf(iterator);
                 if (confirm("Supprimer l'article ?")) {
                     article.remove();
-                    Products.splice(index, 1);
+                    productInLocalStorage.splice(index, 1);
                 }
             }
         });
         localStorage.setItem("Products", JSON.stringify(productInLocalStorage));
-        priceTotal(Products);
-        totalQuantity(Products);
+        priceTotal(productInLocalStorage);
+        totalQuantity(productInLocalStorage);
     });
 });
 
