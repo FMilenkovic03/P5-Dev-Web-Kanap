@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //récupérer la liste des id produits (c fait)
     console.log(productInLocalStorage);
     let products = [];
-    for (i = 0; i < productInLocalStorage.length; i++) {
+    for (let i = 0; i < productInLocalStorage.length; i++) {
         console.log(productInLocalStorage[i].id);
         products.push(productInLocalStorage[i].id);
     }
