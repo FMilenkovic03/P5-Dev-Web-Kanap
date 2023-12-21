@@ -2,6 +2,17 @@
 
 
 fetch('http://localhost:3000/api/products')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+  
+fetch('http://localhost:3000/api/products')
     .then(function (res) {
         if (res.ok) {
             return res.json();
