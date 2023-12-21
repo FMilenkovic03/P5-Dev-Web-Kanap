@@ -1,6 +1,6 @@
 //récup' produit 
 let productInLocalStorage = JSON.parse(localStorage.getItem("Products"));
-let url = "http://localhost:3000/api/products/";
+const url = "http://localhost:3000/api/products/";
 
 
 //declaration
