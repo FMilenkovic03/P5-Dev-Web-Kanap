@@ -2,11 +2,17 @@
 const sectionItems = document.querySelector('#items');
 // On récupère toutes les données de l'api que l'on met dans un constante listProducts
 fetch("http://localhost:3000/api/products")
-  .then(response => response.json())
+  .then(response => {
+    // Log the raw response
+    console.log('Raw response:', response);
+
+    // Then parse it as JSON
+    return response.json();
+  })
   .then(data => {
     for (const listProducts of data){
       console.log(listProducts);
-      // on cré les éléments html manquants de la page index.html et on y insère les données de l'api
+      // on crée les éléments html manquants de la page index.html et on y insère les données de l'api
       let newA = document.createElement('a');
       newA.setAttribute("href", `./product.html?id=${listProducts._id}`);
       sectionItems.appendChild(newA);
@@ -29,8 +35,8 @@ fetch("http://localhost:3000/api/products")
       newP.innerText = listProducts.description;
       newArticle.appendChild(newP);
     }
-   })
-   .catch(err => {
+  })
+  .catch(err => {
     alert(`Une erreur s'est produite et ne permet pas d'afficher les produits de notre catalogue. Veuillez nous en excuser !`);
     console.log("Erreur Fetch script.js", err);
-   })
+  });
